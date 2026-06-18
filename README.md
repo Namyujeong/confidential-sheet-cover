@@ -39,6 +39,72 @@ Or run directly from the repository:
 python3 -m confidential_sheet_cover --help
 ```
 
+## Google Drive Setup
+
+This tool does not call the Google Drive API directly. It works on local `.xlsx` files. To use it with Google Drive, first make the target workbooks available on your local filesystem.
+
+### Option 1: Google Drive for Desktop
+
+This is the simplest setup.
+
+1. Install Google Drive for Desktop.
+2. Sign in to the Google account that has access to the target Drive files.
+3. Open the synced Drive folder on your computer.
+4. Make sure the target `.xlsx` files are available offline if your Drive client is streaming files.
+5. Run this tool against the local synced folder path.
+
+Example:
+
+```bash
+confidential-sheet-cover "$HOME/Google Drive/My Drive/Finance" --dry-run
+confidential-sheet-cover "$HOME/Google Drive/My Drive/Finance"
+```
+
+The exact local Drive path depends on your operating system and Google Drive for Desktop settings.
+
+### Option 2: rclone + Google OAuth
+
+Use this option if you need a repeatable CLI workflow for copying or mounting Drive folders.
+
+High-level setup:
+
+1. Create a Google Cloud project.
+2. Enable the Google Drive API for that project.
+3. Configure the OAuth consent screen.
+4. Create an OAuth Client ID.
+5. Choose **Desktop app** as the OAuth client type for local CLI authentication.
+6. Install and configure `rclone`.
+7. Use `rclone config` to create a Google Drive remote with the OAuth client ID and secret.
+8. Copy, sync, or mount the target Drive folder locally.
+9. Run this tool against the local copied or mounted folder.
+
+Example rclone flow:
+
+```bash
+rclone config
+rclone copy mydrive:"Folder/With/Workbooks" ./drive-workbooks
+confidential-sheet-cover ./drive-workbooks --dry-run
+confidential-sheet-cover ./drive-workbooks
+```
+
+If you are using a local OAuth redirect flow, the OAuth client type should usually be **Desktop app**, not **Web application**. A web application client can cause redirect URI mismatch errors in local CLI tools unless the exact local redirect URI is registered.
+
+### Native Google Sheets
+
+Native Google Sheets are not `.xlsx` files. This tool does not edit native Google Sheets directly.
+
+Recommended options:
+
+- Export native Google Sheets to `.xlsx`, run this tool, then upload the updated workbook if that fits your workflow.
+- Use Google Drive for Desktop or rclone for Office `.xlsx` files already stored in Drive.
+- Build a separate Google Sheets API workflow if you need to modify native Google Sheets in place.
+
+### Service Accounts
+
+A Google service account is not required for this tool.
+
+Use a service account only if you are building an organization-managed automation with the right Google Workspace admin setup, such as domain-wide delegation. For personal or team-level local use, Google Drive for Desktop or an OAuth-based rclone remote is usually simpler.
+
 ## Usage
 
 Always start with a dry run.
