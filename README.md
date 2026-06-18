@@ -1,5 +1,7 @@
 # Confidential Sheet Cover
 
+[English](README.md) | [한국어](README.ko.md)
+
 `confidential-sheet-cover` is a small CLI tool that scans local `.xlsx` workbooks for sensitive payroll, salary, labor cost, personnel cost, project cost, or business expense terms, then adds a `Confidential` cover sheet as the first worksheet.
 
 It works with any local folder, including folders synced by Google Drive for Desktop, OneDrive, Dropbox, or a normal filesystem folder.
