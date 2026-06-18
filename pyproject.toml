@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "confidential-sheet-cover"
+version = "0.1.0"
+description = "Find sensitive spreadsheets and add a confidential cover sheet."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Namyujeong" }]
+keywords = ["excel", "xlsx", "spreadsheet", "confidential", "privacy", "security"]
+dependencies = ["openpyxl>=3.1"]
+
+[project.scripts]
+confidential-sheet-cover = "confidential_sheet_cover.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["confidential_sheet_cover*"]
