@@ -1,6 +1,6 @@
 # Confidential Sheet Cover
 
-[English](#confidential-sheet-cover) | [한국어](#confidential-sheet-cover-한국어) | [한국어 별도 문서](README.ko.md)
+[English](#confidential-sheet-cover) | [한국어](#confidential-sheet-cover-한국어)
 
 `confidential-sheet-cover` is a small CLI tool that scans local `.xlsx` workbooks for sensitive payroll, salary, labor cost, personnel cost, project cost, or business expense terms, then adds a `Confidential` cover sheet as the first worksheet.
 
@@ -216,7 +216,7 @@ MIT
 
 # Confidential Sheet Cover 한국어
 
-[English](#confidential-sheet-cover) | [한국어](#confidential-sheet-cover-한국어) | [한국어 별도 문서](README.ko.md)
+[English](#confidential-sheet-cover) | [한국어](#confidential-sheet-cover-한국어)
 
 `confidential-sheet-cover`는 로컬 `.xlsx` 스프레드시트에서 급여, 연봉, 인건비, 사업비, 프로젝트 비용, 비용 배분 등 민감정보 관련 키워드를 검색하고, 매칭된 파일의 맨 첫 워크시트로 `Confidential` 커버 시트를 추가하는 CLI 도구입니다.
 
